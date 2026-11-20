@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f2ea">
+<title>第二章｜走近越剧</title>
+<style>
+:root{--paper:#f6f2ea;--white:#fffdf8;--ink:#25231f;--muted:#777168;--red:#a53d45;--gold:#a88d62;--line:#e3dbce;--sage:#7b8067}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Songti SC","STSong",serif;line-height:1.85}
+a{color:inherit;text-decoration:none}.wrap{width:min(900px,calc(100% - 36px));margin:auto}
+header{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:21px;letter-spacing:.18em}.brand small{display:block;font:10px Arial,sans-serif;letter-spacing:.16em;color:var(--muted)}
+.back{font-size:13px;color:var(--red)}.hero{padding:55px 0 42px}.eyebrow,.kicker{font:10px Arial,sans-serif;letter-spacing:.2em;color:var(--red)}
+h1{font-size:clamp(38px,7vw,62px);font-weight:500;letter-spacing:.08em;line-height:1.25;margin:15px 0}
+.lead{font-size:16px;color:#625d55;max-width:670px}.hero-note{margin-top:24px;padding:14px 18px;background:#eee8de;border-left:2px solid var(--red);font-size:12px;color:#6e675d}
+.section{padding:34px 0;border-top:1px solid var(--line)}h2{font-size:27px;font-weight:500;margin:8px 0 12px}.muted{font-size:12px;color:var(--muted)}
+.timeline{position:relative;margin:26px 0 0 8px;padding-left:25px;border-left:1px solid #cbbda9}.event{position:relative;padding:0 0 25px 10px}.event:before{content:"";position:absolute;left:-31px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--red);border:3px solid var(--paper)}.year{font:12px Arial,sans-serif;color:var(--red);letter-spacing:.08em}.event h3{font-size:18px;font-weight:500;margin:4px 0}.event p{font-size:13px;color:#6d675f;margin:0;max-width:680px}
+.explore-card{background:var(--white);border:1px solid var(--line);padding:20px;margin-top:16px}.question{font-size:16px;margin:0 0 12px}.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.choice{padding:13px;border:1px solid var(--line);background:transparent;text-align:left;font:13px inherit;cursor:pointer;color:var(--ink)}.choice.selected{border:2px solid var(--red);background:#f7efeb}.result{display:none;margin-top:13px;padding:13px;background:#f0eee6;font-size:13px}
+.compare{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}.compare div{background:var(--white);border:1px solid var(--line);padding:17px}.compare b{font-weight:500}.compare p{font-size:12px;color:var(--muted);margin:7px 0 0}
+.quiz{background:var(--white);border:1px solid var(--line);padding:20px}.option{display:block;padding:11px 13px;margin:8px 0;border:1px solid var(--line);cursor:pointer;font-size:13px}.option input{margin-right:9px;accent-color:var(--red)}.feedback{display:none;margin-top:13px;padding:12px;background:#f0eee6;font-size:13px}
+button.primary{border:0;background:var(--ink);color:white;padding:11px 18px;margin-top:12px;cursor:pointer;font-size:13px}.primary:hover{background:var(--red)}
+.complete{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px;background:#eee8de}.complete p{margin:0;font-size:13px}.complete button{border:1px solid var(--red);background:var(--red);color:white;padding:11px 15px;cursor:pointer}
+footer{padding:30px 0 45px;color:var(--muted);font-size:11px;border-top:1px solid var(--line);margin-top:35px}
+@media(max-width:620px){.hero{padding:38px 0 28px}.choices,.compare{grid-template-columns:1fr}.complete{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body><div class="wrap">
+<header><a class="brand" href="index.html">花为媒<small>越剧 · 互动学习之旅</small></a><a class="back" href="index.html">← 返回首页</a></header>
+<main>
+<section class="hero">
+<div class="eyebrow">CHAPTER 02 · DISCOVER YUE OPERA</div>
+<h1>走近越剧</h1>
+<p class="lead">越剧并不是一开始就拥有今天熟悉的舞台、唱腔与表演风格。它从民间说唱出发，在一次次演出、学习与改革中，逐渐形成自己的面貌。</p>
+<div class="hero-note">本章学习目标：了解越剧的起源与发展线索，并尝试从音乐、语言和舞台表现中观察它的艺术特点。</div>
+</section>
+
+<section class="section">
+<div class="kicker">01 / ORIGIN</div><h2>越剧从哪里来？</h2>
+<p>越剧发源于浙江绍兴地区嵊县一带。它的前身与当地民间说唱「落地唱书」有关。早期艺人以说唱方式演绎故事，后来逐渐走上乡村草台，发展为角色扮演的戏曲演出，早期常被称为「小歌班」或「的笃班」。</p>
+<div class="explore-card">
+<p class="question"><b>想一想：</b>从「落地唱书」发展成舞台戏曲，最明显的变化是什么？</p>
+<div class="choices" id="originChoices">
+<button class="choice" onclick="originPick(this,'a')">A｜从一个人或说唱形式，逐渐发展出角色扮演和舞台表演</button>
+<button class="choice" onclick="originPick(this,'b')">B｜只是换了一个剧种名称，表演形式完全没变</button>
+</div>
+<div class="result" id="originResult"></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">02 / TIMELINE</div><h2>一条时间线，认识越剧的成长</h2>
+<p class="muted">下面是帮助初学者建立整体印象的简明时间线。不同史料对个别早期节点的记载口径略有差异，因此这里采用较稳妥的阶段性表述。</p>
+<div class="timeline">
+<div class="event"><div class="year">清末 · 萌芽</div><h3>从落地唱书出发</h3><p>嵊县一带的民间说唱逐渐发展为有角色、有故事的舞台演出，形成早期小歌班。</p></div>
+<div class="event"><div class="year">1906 年前后</div><h3>小歌班登上乡村舞台</h3><p>落地唱书艺人开始以角色扮演的方式演出，越剧的早期戏曲形态逐渐形成。</p></div>
+<div class="event"><div class="year">20 世纪 10—20 年代</div><h3>走向城市，出现女班</h3><p>小歌班逐步进入杭州、上海等城市演出；女班兴起，剧种的演员构成和舞台面貌发生变化。</p></div>
+<div class="event"><div class="year">20 世纪 30 年代以后</div><h3>女子越剧发展</h3><p>女子绍兴文戏逐渐发展，女演员成为越剧舞台的重要主体，艺术表现也持续丰富。</p></div>
+<div class="event"><div class="year">1938 年</div><h3>「越剧」名称逐渐使用</h3><p>相关史料记载，1938 年起多数戏班、剧团开始使用「越剧」这一名称。</p></div>
+<div class="event"><div class="year">20 世纪 40 年代以来</div><h3>艺术改革与成熟</h3><p>越剧在编剧、导演、音乐、表演、服装、化妆和舞台美术等方面持续改革，逐步形成更成熟的艺术风格。</p></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">03 / ARTISTIC FEATURES</div><h2>越剧有哪些值得观察的特点？</h2>
+<p>越剧的艺术面貌来自多种因素共同作用。下面先从四个观察入口认识它，而不是把某一种特点当成所有作品的固定规则。</p>
+<div class="compare">
+<div><b>音乐与唱腔</b><p>以板腔体为基础，唱腔在发展中不断丰富，并形成不同流派。</p></div>
+<div><b>语言与韵味</b><p>与浙江嵊县一带的地方语言及其语音韵味有深厚渊源。</p></div>
+<div><b>表演与人物</b><p>重视人物情感表达，唱、念、做、舞共同塑造人物。</p></div>
+<div><b>服装与舞台</b><p>在发展过程中不断吸收其他艺术形式的经验，形成自己的舞台审美。</p></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">04 / YOUR OBSERVATION</div><h2>互动观察：你会先从哪里认识越剧？</h2>
+<div class="explore-card">
+<p class="question">如果向一个完全不了解越剧的朋友介绍它，你最想先让他体验什么？</p>
+<div class="choices" id="observeChoices">
+<button class="choice" onclick="observePick(this,'唱腔')">♫ 听一段唱腔</button>
+<button class="choice" onclick="observePick(this,'服装与舞台')">✧ 看服装与舞台</button>
+<button class="choice" onclick="observePick(this,'人物与故事')">❀ 认识人物与故事</button>
+<button class="choice" onclick="observePick(this,'身段与表演')">◇ 观察身段与表演</button>
+</div>
+<div class="result" id="observeResult"></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">05 / QUICK CHECK</div><h2>知识小检查</h2>
+<div class="quiz">
+<p class="question"><b>问题：</b>越剧的前身与哪一种民间艺术形式有密切关系？</p>
+<label class="option"><input type="radio" name="q" value="a">落地唱书</label>
+<label class="option"><input type="radio" name="q" value="b">皮影戏</label>
+<label class="option"><input type="radio" name="q" value="c">昆曲</label>
+<button class="primary" onclick="checkAnswer()">提交答案</button>
+<div class="feedback" id="feedback"></div>
+</div>
+</section>
+
+<section class="section">
+<div class="complete"><p><b>完成第二章了吗？</b><br><span class="muted">完成后返回首页，继续听懂越剧唱腔。</span></p><button onclick="finishChapter()">标记第二章已完成</button></div>
+</section>
+</main>
+<footer>花为媒 · 越剧互动学习之旅<br>本章历史梳理参考中国非物质文化遗产网及上海越剧艺术研究中心公开资料。</footer>
+</div>
+<script>
+const KEY='huaw-ei-mei-lessons-v1';
+function originPick(btn,val){
+ document.querySelectorAll('#originChoices .choice').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');
+ const r=document.getElementById('originResult');r.style.display='block';
+ r.textContent=val==='a'?'回答正确！关键变化不只是名称，而是从说唱逐渐走向角色扮演和舞台演出。':'再想想：从说唱到戏曲舞台，表演形式也发生了变化。';
+}
+function observePick(btn,val){
+ document.querySelectorAll('#observeChoices .choice').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');
+ const r=document.getElementById('observeResult');r.style.display='block';
+ r.textContent='你选择从「'+val+'」开始认识越剧。这个入口没有标准答案，它也会成为你接下来学习时的观察重点。';
+}
+function checkAnswer(){
+ const s=document.querySelector('input[name="q"]:checked'),f=document.getElementById('feedback');f.style.display='block';
+ if(!s){f.textContent='请先选择一个答案。';return;}
+ f.textContent=s.value==='a'?'回答正确！越剧从嵊县一带的民间说唱「落地唱书」逐渐发展而来。':'还差一点。越剧的前身与嵊县一带的民间说唱「落地唱书」有关。';
+}
+function finishChapter(){
+ try{let done=JSON.parse(localStorage.getItem(KEY)||'[]');if(!done.includes(2))done.push(2);localStorage.setItem(KEY,JSON.stringify(done));alert('已记录第二章完成！返回首页查看学习进度。');}
+ catch(e){alert('暂时无法保存进度，请稍后重试。');}
+}
+</script>
+</body></html>
