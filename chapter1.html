@@ -89,7 +89,7 @@ function checkAnswer(){
  const box=document.getElementById('feedback');
  box.style.display='block';
  if(!selected){box.textContent='请先选择一个答案。';return;}
- box.textContent=selected.value==='a'?'回答正确！确认版本可以避免把不同剧种、不同改编的资料混在一起。':'再想一想：同名剧目也可能有不同剧种和改编版本。';
+ const correct=selected.value==='a'; box.textContent=correct?'回答正确！确认版本可以避免把不同剧种、不同改编的资料混在一起。':'再想一想：同名剧目也可能有不同剧种和改编版本。'; if(window.HWMProgress)HWMProgress.recordQuiz('chapter1',correct?1:0,1);
 }
 function finishChapter(){
  try{
@@ -97,9 +97,11 @@ function finishChapter(){
   const done=JSON.parse(localStorage.getItem(key)||'[]');
   if(!done.includes(1))done.push(1);
   localStorage.setItem(key,JSON.stringify(done));
+  if(window.HWMProgress)HWMProgress.completeChapter(1);
   alert('已记录第一章完成！返回首页可以查看学习进度。');
  }catch(e){alert('本次无法保存进度，请稍后重试。');}
 }
 </script>
+<script src="progress.js"></script>
 </body>
 </html>

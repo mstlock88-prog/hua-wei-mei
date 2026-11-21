@@ -124,6 +124,13 @@ footer{padding:35px 0 55px;color:var(--muted);font-size:12px;display:flex;justif
 </section>
 
 <section class="section">
+<div class="note-card" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+<div><div class="kicker">LEARNING PROGRESS</div><h3 style="font-size:20px;font-weight:500;margin:8px 0">完成第三章声音档案探索了吗？</h3><p style="color:var(--muted);font-size:13px;margin:0">完成后可以把这一章加入首页学习记录。</p></div>
+<button class="primary" onclick="finishChapter3()">标记第三章已完成</button>
+</div>
+</section>
+
+<section class="section">
 <div class="section-head"><div><div class="kicker">SOURCES & NOTES</div><h2>档案来源与说明</h2></div></div>
 <div class="sources">
 <p>本页的基础知识参考以下公开资料。流派风格描述是入门线索，不是对每一段演唱的绝对判定；具体分析应结合演出版本、唱段语境和录音。</p>
@@ -161,8 +168,10 @@ function renderNotes(){const notes=getNotes(),el=document.getElementById('savedL
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function saveNote(){const title=document.getElementById('noteTitle').value.trim()||'未命名声音档案',subject=document.getElementById('noteArtist').value.trim()||'未分类',body=document.getElementById('noteImpression').value.trim();if(!body){alert('先写下一点你的听觉观察，再保存吧。');return;}const notes=getNotes();notes.unshift({title,subject,body,date:new Date().toLocaleDateString('zh-CN')});localStorage.setItem(NOTEKEY,JSON.stringify(notes));document.getElementById('noteTitle').value='';document.getElementById('noteArtist').value='';document.getElementById('noteImpression').value='';renderNotes();}
 function deleteNote(i){const notes=getNotes();notes.splice(i,1);localStorage.setItem(NOTEKEY,JSON.stringify(notes));renderNotes();}
-function checkQuiz(){const a=document.querySelector('input[name="quiz"]:checked'),f=document.getElementById('quizFeedback');if(!a){f.textContent='请选择一个答案。';return;}f.textContent=a.value==='b'?'回答正确。流派风格在长期艺术实践中逐渐形成，唱腔也会不断发展。':'再想一想：流派不是固定公式，艺术风格也会随着实践不断丰富。';}
+function checkQuiz(){const a=document.querySelector('input[name="quiz"]:checked'),f=document.getElementById('quizFeedback');if(!a){f.textContent='请选择一个答案。';return;}const correct=a.value==='b';f.textContent=correct?'回答正确。流派风格在长期艺术实践中逐渐形成，唱腔也会不断发展。':'再想一想：流派不是固定公式，艺术风格也会随着实践不断丰富。';if(window.HWMProgress)HWMProgress.recordQuiz('chapter3',correct?1:0,1);}
+function finishChapter3(){try{const done=JSON.parse(localStorage.getItem(KEY)||'[]');if(!done.includes(3))done.push(3);localStorage.setItem(KEY,JSON.stringify(done));if(window.HWMProgress)HWMProgress.completeChapter(3);alert('已记录第三章完成！返回首页查看学习档案。');}catch(e){alert('暂时无法保存学习记录，请稍后重试。');}}
 renderNotes();
 </script>
+<script src="progress.js"></script>
 </body>
 </html>

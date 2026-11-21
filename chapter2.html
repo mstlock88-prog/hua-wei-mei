@@ -119,11 +119,12 @@ function observePick(btn,val){
 function checkAnswer(){
  const s=document.querySelector('input[name="q"]:checked'),f=document.getElementById('feedback');f.style.display='block';
  if(!s){f.textContent='请先选择一个答案。';return;}
- f.textContent=s.value==='a'?'回答正确！越剧从嵊县一带的民间说唱「落地唱书」逐渐发展而来。':'还差一点。越剧的前身与嵊县一带的民间说唱「落地唱书」有关。';
+ const correct=s.value==='a';f.textContent=correct?'回答正确！越剧从嵊县一带的民间说唱「落地唱书」逐渐发展而来。':'还差一点。越剧的前身与嵊县一带的民间说唱「落地唱书」有关。';if(window.HWMProgress)HWMProgress.recordQuiz('chapter2',correct?1:0,1);
 }
 function finishChapter(){
- try{let done=JSON.parse(localStorage.getItem(KEY)||'[]');if(!done.includes(2))done.push(2);localStorage.setItem(KEY,JSON.stringify(done));alert('已记录第二章完成！返回首页查看学习进度。');}
+ try{let done=JSON.parse(localStorage.getItem(KEY)||'[]');if(!done.includes(2))done.push(2);localStorage.setItem(KEY,JSON.stringify(done));if(window.HWMProgress)HWMProgress.completeChapter(2);alert('已记录第二章完成！返回首页查看学习进度。');}
  catch(e){alert('暂时无法保存进度，请稍后重试。');}
 }
 </script>
+<script src="progress.js"></script>
 </body></html>

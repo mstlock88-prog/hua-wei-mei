@@ -72,6 +72,20 @@ h2{font-size:clamp(30px,4vw,46px);font-weight:500;letter-spacing:.1em;margin:0}
  .footer{flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+.dashboard{border:1px solid var(--line);background:#f9f6f0;padding:30px}
+.dash-top{display:flex;justify-content:space-between;align-items:end;gap:20px}
+.dash-count{text-align:right;color:var(--muted);font-size:12px}.dash-count strong{display:block;color:var(--red);font:38px Georgia,serif}
+.dash-progress{height:7px;background:#e7dfd2;margin:24px 0 20px;overflow:hidden}.dash-progress span{display:block;height:100%;background:var(--red);transition:width .3s}
+.dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.dash-stats div{padding:15px;border:1px solid var(--line);background:var(--paper)}
+.dash-stats strong{display:block;font:25px Georgia,serif;color:var(--ink)}.dash-stats span{display:block;font-size:11px;color:var(--muted);margin-top:6px}
+.dash-lessons{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.dash-lessons a{border:1px solid var(--line);padding:14px;background:var(--paper);display:flex;flex-direction:column;gap:7px}
+.dash-lessons a span{font-size:12px;color:var(--muted)}.dash-lessons a b{font-size:14px;font-weight:500}.dash-lessons a small{color:var(--red);font-size:11px}
+.dash-foot{font-size:11px;color:var(--muted);margin:16px 0 0}
+@media(max-width:760px){.dash-top{display:block}.dash-count{text-align:left;margin-top:18px}.dash-stats{grid-template-columns:repeat(2,1fr)}.dash-lessons{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -128,6 +142,12 @@ h2{font-size:clamp(30px,4vw,46px);font-weight:500;letter-spacing:.1em;margin:0}
           <path d="M100 500 C180 410 220 330 260 210" fill="none" stroke="#a83c43" stroke-width="1" opacity=".35"/>
         </svg>
         <div class="art-caption">以花为引 · 以戏为媒</div>
+      </div>
+    </section>
+
+    <section class="section" id="my-learning">
+      <div id="learningDashboard" class="dashboard" aria-live="polite">
+        <div class="index">YOUR LEARNING RECORD</div><h2>我的学习档案</h2><p class="section-intro">正在读取当前设备的学习记录……</p>
       </div>
     </section>
 
@@ -195,5 +215,6 @@ h2{font-size:clamp(30px,4vw,46px);font-weight:500;letter-spacing:.1em;margin:0}
   </main>
   <footer><strong>花为媒</strong><span>一曲入戏，一步一花开。</span><span>越剧数字体验 · 首页概念版</span></footer>
 </div>
+<script src="progress.js"></script>
 </body>
 </html>

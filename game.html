@@ -123,6 +123,7 @@
   }
   function endGame() {
     running = false;
+    if (window.HWMProgress) window.HWMProgress.recordGame(score);
     tiles.forEach(t => t.el.remove()); tiles = [];
     if (score > best) { best = score; localStorage.setItem('minimalTilesBest', best); bestEl.textContent = String(best).padStart(3,'0'); }
     title.textContent = 'GAME OVER';
@@ -169,5 +170,6 @@
   });
 })();
 </script>
+<script src="progress.js"></script>
 </body>
 </html>
