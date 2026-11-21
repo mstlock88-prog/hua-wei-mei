@@ -2,174 +2,64 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>MINIMAL TILES</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>花为媒｜唱腔节奏体验</title>
 <style>
-  :root { color-scheme: light; --ink:#171717; --paper:#f7f7f4; --line:#deded8; }
-  * { box-sizing:border-box; }
-  html,body { margin:0; width:100%; min-height:100%; background:var(--paper); color:var(--ink); font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif; }
-  body { min-height:100svh; display:flex; justify-content:center; align-items:center; padding:18px; }
-  .app { width:min(100%,460px); }
-  header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:16px; }
-  .eyebrow { font-size:10px; letter-spacing:.22em; color:#777; margin-bottom:7px; }
-  h1 { font-size:23px; letter-spacing:.11em; margin:0; font-weight:700; }
-  .scorebox { text-align:right; }
-  .score-label { font-size:10px; letter-spacing:.18em; color:#777; }
-  #score { font-size:30px; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.1; }
-  .board-wrap { position:relative; width:100%; height:min(68svh,650px); min-height:390px; border:1px solid var(--line); background:#fff; overflow:hidden; touch-action:pan-y; user-select:none; }
-  #board { width:100%; height:100%; display:grid; grid-template-columns:repeat(4,1fr); position:relative; }
-  .lane { position:relative; border-right:1px solid var(--line); background:#fff; }
-  .lane:last-child { border-right:0; }
-  .lane:nth-child(even) { background:#fcfcfa; }
-  .tile { position:absolute; left:5px; right:5px; height:108px; background:var(--ink); border-radius:2px; cursor:pointer; box-shadow:0 2px 0 rgba(0,0,0,.08); }
-  .tile:active { background:#454545; }
-  .hit-line { position:absolute; z-index:3; left:0; right:0; bottom:20px; border-top:1px solid #bcbcb5; pointer-events:none; }
-  .hit-label { position:absolute; z-index:4; right:9px; bottom:25px; color:#aaa; background:#fff; padding:2px 5px; font-size:9px; letter-spacing:.16em; pointer-events:none; }
-  .overlay { position:absolute; inset:0; z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px; background:rgba(247,247,244,.94); }
-  .overlay.hidden { display:none; }
-  .overlay h2 { margin:0 0 10px; font-size:25px; letter-spacing:.12em; }
-  .overlay p { color:#777; font-size:13px; line-height:1.7; margin:0 0 22px; max-width:270px; }
-  button { border:0; background:var(--ink); color:white; padding:14px 34px; font-size:12px; letter-spacing:.18em; cursor:pointer; border-radius:2px; }
-  button:active { transform:translateY(1px); }
-  .sub { margin-top:17px; color:#999; font-size:10px; letter-spacing:.1em; line-height:1.7; }
-  footer { display:flex; justify-content:space-between; color:#999; font-size:10px; letter-spacing:.12em; margin-top:12px; }
-  #toast { position:absolute; z-index:4; top:14px; left:0; right:0; text-align:center; font-size:11px; letter-spacing:.16em; color:#777; opacity:0; transition:opacity .2s; pointer-events:none; }
-  #toast.show { opacity:1; }
-  @media (max-width:380px) { body{padding:12px} .board-wrap{min-height:360px;height:66svh} .tile{height:94px} }
+:root{--paper:#f6f1e8;--ink:#29231f;--muted:#81766b;--line:#d9cdbd;--red:#9f3937;--pink:#c98787;--gold:#a98a55;--white:#fffdf9}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",sans-serif;padding:22px 14px 36px}
+.app{width:min(100%,760px);margin:auto}.topline{font-size:11px;letter-spacing:.22em;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:12px}h1{font-family:Georgia,"Songti SC",serif;font-size:clamp(26px,6vw,38px);font-weight:500;letter-spacing:.08em;margin:20px 0 8px}.intro{color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 20px}.panel{background:var(--white);border:1px solid var(--line);padding:18px;margin:14px 0}.label{font-size:10px;letter-spacing:.18em;color:var(--gold);margin-bottom:10px}.file-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}input[type=file]{max-width:100%;font-size:12px;color:var(--muted)}.hint{font-size:12px;color:var(--muted);line-height:1.7;margin:10px 0 0}#mediaBox{margin-top:14px}audio,video{width:100%;max-height:230px}button{border:0;background:var(--red);color:white;padding:13px 20px;font-size:13px;letter-spacing:.08em;cursor:pointer;border-radius:2px}button:disabled{opacity:.35;cursor:not-allowed}.outline{background:transparent;border:1px solid var(--line);color:var(--ink)}.game-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.metric{font-size:12px;color:var(--muted)}.metric strong{display:block;font-size:26px;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}.progress{height:4px;background:#eee5da;margin:14px 0 18px;overflow:hidden}.progress>div{height:100%;width:0;background:var(--red);transition:width .1s}.prompt{min-height:130px;border:1px solid var(--line);background:#fbf8f2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;margin-bottom:14px}.prompt small{color:var(--muted);letter-spacing:.12em;font-size:10px}.prompt strong{font-family:Georgia,"Songti SC",serif;font-size:25px;font-weight:500;margin:9px 0;color:var(--red)}.prompt span{font-size:12px;color:var(--muted)}.lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.lane{background:#f2e9de;border:1px solid var(--line);color:var(--ink);padding:18px 4px;min-height:72px;font-size:12px}.lane.active{background:var(--red);color:white;border-color:var(--red);transform:translateY(-2px)}.lane small{display:block;font-size:10px;opacity:.7;margin-top:5px}.feedback{height:28px;text-align:center;padding-top:8px;color:var(--red);font-size:12px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.hidden{display:none!important}.result{text-align:center;padding:12px}.result strong{display:block;font-size:42px;font-weight:500;color:var(--red);font-family:Georgia,serif}.result p{font-size:13px;color:var(--muted);line-height:1.8}.foot{font-size:11px;color:var(--muted);line-height:1.8;margin-top:18px}
+@media(max-width:420px){body{padding:16px 10px}.panel{padding:14px}.lane{padding:14px 2px}.prompt{min-height:118px}}
 </style>
 </head>
-<body>
-<main class="app">
-  <header>
-    <div><div class="eyebrow">A SMALL RHYTHM GAME</div><h1>MINIMAL TILES</h1></div>
-    <div class="scorebox"><div class="score-label">SCORE</div><div id="score">000</div></div>
-  </header>
-  <section class="board-wrap" aria-label="游戏区域">
-    <div id="board">
-      <div class="lane" data-lane="0"></div><div class="lane" data-lane="1"></div>
-      <div class="lane" data-lane="2"></div><div class="lane" data-lane="3"></div>
-    </div>
-    <div class="hit-line"></div><div class="hit-label">TAP</div><div id="toast">PERFECT</div>
-    <div class="overlay" id="overlay">
-      <div class="eyebrow">FOUR LANES · ONE BEAT</div>
-      <h2 id="overlay-title">READY TO PLAY?</h2>
-      <p id="overlay-copy">点击下落的黑色方块。不要漏掉，也不要点击白色区域。</p>
-      <button id="start">START</button>
-      <div class="sub">电脑：D · F · J · K<br>手机：直接触摸方块</div>
-    </div>
-  </section>
-  <footer><span>BEST <b id="best">000</b></span><span>KEEP THE RHYTHM</span></footer>
+<body><main class="app">
+<div class="topline">花为媒 · 越剧互动学习馆 / 声音体验</div>
+<h1>跟随唱腔 · 节奏体验</h1>
+<p class="intro">第一关以你提供的《花为媒》唱段录屏为节奏参考。先选择本机上的原视频或音频，再跟随提示点击，感受唱腔中的节奏起伏。</p>
+<section class="panel" id="sourcePanel">
+  <div class="label">01 / 选择音乐素材</div>
+  <div class="file-row"><input id="fileInput" type="file" accept="audio/*,video/*"><button id="loadBtn" disabled>载入素材</button></div>
+  <p class="hint">请选择你刚才发给我的那段约 30 秒 MP4 录屏，或你有权使用的音频文件。文件只在当前设备浏览器中播放，不会上传到网站服务器。</p>
+  <div id="mediaBox" class="hidden"></div>
+  <p class="hint" id="fileStatus">尚未选择素材。</p>
+</section>
+<section class="panel" id="gamePanel">
+  <div class="game-head"><div><div class="label">02 / 跟随节奏</div><div class="metric">本局得分<strong id="score">0</strong></div></div><div class="metric" style="text-align:right">命中<strong id="hits">0 / 21</strong></div></div>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="prompt"><small id="cueCount">准备就绪</small><strong id="cueText">听见音乐，再按下对应花瓣</strong><span id="cueSub">提示会跟随录音时间出现</span></div>
+  <div class="lanes" id="lanes">
+    <button class="lane" data-lane="0" disabled>梅<small>花瓣一</small></button>
+    <button class="lane" data-lane="1" disabled>兰<small>花瓣二</small></button>
+    <button class="lane" data-lane="2" disabled>竹<small>花瓣三</small></button>
+    <button class="lane" data-lane="3" disabled>菊<small>花瓣四</small></button>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite">载入音乐后即可开始</div>
+  <div class="actions"><button id="startBtn" disabled>开始节奏挑战</button><button id="resetBtn" class="outline">重新选择素材</button></div>
+</section>
+<section class="panel result hidden" id="resultPanel"><div class="label">03 / 本次体验结果</div><strong id="finalScore">0</strong><p id="resultCopy"></p><button id="againBtn">再体验一次</button></section>
+<p class="foot">节奏提示是根据你提供的 30 秒录屏音轨做的初步自动节奏分析，属于体验版时间点，并非专业戏曲节拍标注。若音乐版本或开头剪辑不同，提示可能略有偏差。电脑可用鼠标点击，手机可直接触摸花瓣按钮。</p>
 </main>
 <script>
-(() => {
-  const board = document.getElementById('board');
-  const lanes = [...document.querySelectorAll('.lane')];
-  const overlay = document.getElementById('overlay');
-  const title = document.getElementById('overlay-title');
-  const copy = document.getElementById('overlay-copy');
-  const startBtn = document.getElementById('start');
-  const scoreEl = document.getElementById('score');
-  const bestEl = document.getElementById('best');
-  const toast = document.getElementById('toast');
-  const hitLine = 20;
-  let tiles = [], score = 0, running = false, lastTime = 0, spawnTimer = 0;
-  let speed = 210, spawnEvery = 720, audioCtx = null, toastTimer = null;
-  let best = Number(localStorage.getItem('minimalTilesBest') || 0);
-  bestEl.textContent = String(best).padStart(3,'0');
-
-  function sound(lane) {
-    try {
-      audioCtx ||= new (window.AudioContext || window.webkitAudioContext)();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      const notes = [261.63,293.66,329.63,392.00];
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      const now = audioCtx.currentTime;
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(notes[lane], now);
-      osc.frequency.exponentialRampToValueAtTime(notes[lane] * 0.995, now + .22);
-      gain.gain.setValueAtTime(.0001, now);
-      gain.gain.exponentialRampToValueAtTime(.16, now + .008);
-      gain.gain.exponentialRampToValueAtTime(.0001, now + .34);
-      osc.connect(gain); gain.connect(audioCtx.destination);
-      osc.start(now); osc.stop(now + .36);
-    } catch(e) {}
-  }
-
-  function updateScore() { scoreEl.textContent = String(score).padStart(3,'0'); }
-  function spawnTile() {
-    const lane = Math.floor(Math.random() * 4);
-    const el = document.createElement('div');
-    el.className = 'tile';
-    el.setAttribute('role','button');
-    el.setAttribute('aria-label','黑色音符');
-    lanes[lane].appendChild(el);
-    const tile = { lane, y: -112, el, hit:false };
-    el.addEventListener('pointerdown', e => { e.preventDefault(); hit(tile); });
-    tiles.push(tile);
-  }
-  function hit(tile) {
-    if (!running || tile.hit) return;
-    tile.hit = true;
-    sound(tile.lane);
-    tile.el.remove();
-    tiles = tiles.filter(t => t !== tile);
-    score++; updateScore();
-    speed = Math.min(430, 210 + score * 3.2);
-    spawnEvery = Math.max(390, 720 - score * 4);
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 180);
-  }
-  function endGame() {
-    running = false;
-    if (window.HWMProgress) window.HWMProgress.recordGame(score);
-    tiles.forEach(t => t.el.remove()); tiles = [];
-    if (score > best) { best = score; localStorage.setItem('minimalTilesBest', best); bestEl.textContent = String(best).padStart(3,'0'); }
-    title.textContent = 'GAME OVER';
-    copy.textContent = `你的得分是 ${score}。再试一次，看看能不能打破最高纪录。`;
-    startBtn.textContent = 'PLAY AGAIN';
-    overlay.classList.remove('hidden');
-  }
-  function loop(time) {
-    if (!running) return;
-    const dt = Math.min((time - lastTime) / 1000 || 0, .04);
-    lastTime = time;
-    spawnTimer += dt * 1000;
-    if (spawnTimer >= spawnEvery) { spawnTimer = 0; spawnTile(); }
-    const boardHeight = board.clientHeight;
-    for (const tile of [...tiles]) {
-      tile.y += speed * dt;
-      tile.el.style.transform = `translateY(${tile.y}px)`;
-      if (tile.y + 108 >= boardHeight - hitLine) { endGame(); return; }
-    }
-    requestAnimationFrame(loop);
-  }
-  function startGame() {
-    tiles.forEach(t => t.el.remove()); tiles = [];
-    score = 0; speed = 210; spawnEvery = 720; spawnTimer = 0;
-    updateScore(); running = true;
-    overlay.classList.add('hidden');
-    lastTime = performance.now();
-    spawnTile();
-    requestAnimationFrame(loop);
-  }
-  startBtn.addEventListener('click', startGame);
-  board.addEventListener('pointerdown', e => {
-    if (!running) return;
-    if (!e.target.classList.contains('tile')) endGame();
-  });
-  document.addEventListener('keydown', e => {
-    if (!running || e.repeat) return;
-    const map = {d:0,f:1,j:2,k:3};
-    const lane = map[e.key.toLowerCase()];
-    if (lane === undefined) return;
-    const candidates = tiles.filter(t => t.lane === lane).sort((a,b) => b.y-a.y);
-    if (candidates.length) hit(candidates[0]);
-    else endGame();
-  });
+(()=>{
+ const cueTimes=[1.37,2.04,2.89,3.53,4.38,5.24,6.32,6.94,7.63,8.67,9.78,10.77,11.84,12.85,14.12,15.20,15.84,16.66,17.90,18.98,19.61];
+ const cueLanes=[0,2,1,3,0,1,2,0,3,1,2,0,3,1,2,3,0,2,1,3,0];
+ const fileInput=document.getElementById('fileInput'),loadBtn=document.getElementById('loadBtn'),mediaBox=document.getElementById('mediaBox'),fileStatus=document.getElementById('fileStatus');
+ const startBtn=document.getElementById('startBtn'),resetBtn=document.getElementById('resetBtn'),againBtn=document.getElementById('againBtn');
+ const laneBtns=[...document.querySelectorAll('.lane')],scoreEl=document.getElementById('score'),hitsEl=document.getElementById('hits'),bar=document.getElementById('bar'),cueCount=document.getElementById('cueCount'),cueText=document.getElementById('cueText'),cueSub=document.getElementById('cueSub'),feedback=document.getElementById('feedback');
+ let media=null,objectUrl=null,raf=0,running=false,items=[],score=0,hits=0,lastCue=-1,best=Number(localStorage.getItem('minimalTilesBest')||0);
+ function setFeedback(t){feedback.textContent=t}
+ function clearMedia(){if(media){media.pause();media.remove();media=null}if(objectUrl){URL.revokeObjectURL(objectUrl);objectUrl=null}mediaBox.classList.add('hidden');mediaBox.innerHTML='';startBtn.disabled=true;laneBtns.forEach(b=>b.disabled=true);}
+ fileInput.addEventListener('change',()=>{loadBtn.disabled=!fileInput.files.length;fileStatus.textContent=fileInput.files.length?`已选择：${fileInput.files[0].name}`:'尚未选择素材。'});
+ loadBtn.addEventListener('click',()=>{const f=fileInput.files[0];if(!f)return;clearMedia();objectUrl=URL.createObjectURL(f);media=document.createElement(f.type.startsWith('video/')?'video':'audio');media.src=objectUrl;media.controls=true;media.playsInline=true;media.preload='metadata';mediaBox.appendChild(media);mediaBox.classList.remove('hidden');media.addEventListener('loadedmetadata',()=>{fileStatus.textContent=`素材已载入 · ${Math.floor(media.duration)} 秒。建议从头开始播放。`;startBtn.disabled=false;setFeedback('素材已就绪，可以开始挑战');});media.addEventListener('error',()=>{fileStatus.textContent='浏览器无法播放这个文件，请尝试 MP4、MP3 或 WAV。';});});
+ function resetRound(){cancelAnimationFrame(raf);running=false;score=0;hits=0;lastCue=-1;items=cueTimes.map((t,i)=>({time:t,lane:cueLanes[i],state:'pending'}));scoreEl.textContent='0';hitsEl.textContent=`0 / ${cueTimes.length}`;bar.style.width='0%';cueCount.textContent='准备就绪';cueText.textContent='听见音乐，再按下对应花瓣';cueSub.textContent='提示会跟随录音时间出现';laneBtns.forEach(b=>{b.disabled=true;b.classList.remove('active')});document.getElementById('resultPanel').classList.add('hidden');}
+ function start(){if(!media)return;resetRound();media.currentTime=0;media.play().then(()=>{running=true;laneBtns.forEach(b=>b.disabled=false);startBtn.disabled=true;setFeedback('跟随唱腔，点击亮起的花瓣');tick();}).catch(()=>{setFeedback('请先点击播放器播放，或检查浏览器是否允许播放');});}
+ function tick(){if(!running||!media)return;const t=media.currentTime;let active=null;items.forEach((it,i)=>{if(it.state==='pending'&&t>it.time+.48){it.state='miss';}if(it.state==='pending'&&Math.abs(t-it.time)<=.48){active=it;lastCue=i;}});laneBtns.forEach((b,i)=>{const on=active&&active.lane===i;b.classList.toggle('active',!!on)});if(active){cueCount.textContent=`节奏提示 ${lastCue+1} / ${cueTimes.length}`;cueText.textContent=['梅','兰','竹','菊'][active.lane];cueSub.textContent='现在点击对应花瓣';}else{const next=items.find(x=>x.state==='pending');cueText.textContent=next?'准备下一拍':'这一段快结束了';cueSub.textContent=next?'听音乐，留意下一次提示':'继续听完音乐';}
+ const done=items.filter(x=>x.state!=='pending').length;hitsEl.textContent=`${hits} / ${cueTimes.length}`;bar.style.width=`${done/cueTimes.length*100}%`;if(t>cueTimes[cueTimes.length-1]+1.0||media.ended){finish();return}raf=requestAnimationFrame(tick);}
+ function tap(lane){if(!running||!media)return;const t=media.currentTime;let candidate=null;for(const it of items){if(it.state==='pending'&&it.lane===lane&&Math.abs(t-it.time)<=.48){if(!candidate||Math.abs(t-it.time)<Math.abs(t-candidate.time))candidate=it;}}if(candidate){const diff=Math.abs(t-candidate.time);const pts=diff<=.16?100:diff<=.30?70:40;candidate.state='hit';candidate.points=pts;score+=pts;hits++;scoreEl.textContent=score;setFeedback(pts===100?'精准合拍！':pts===70?'节奏不错！':'命中这一拍');}else{setFeedback('再听一听，等对应花瓣亮起');}}
+ laneBtns.forEach(b=>b.addEventListener('click',()=>tap(Number(b.dataset.lane))));
+ function finish(){running=false;cancelAnimationFrame(raf);media.pause();laneBtns.forEach(b=>{b.disabled=true;b.classList.remove('active')});const missed=cueTimes.length-hits;const pct=Math.round(score/(cueTimes.length*100)*100);document.getElementById('finalScore').textContent=`${pct}分`;document.getElementById('resultCopy').textContent=`你命中了 ${hits} 拍，错过或未命中 ${missed} 拍。本次节奏积分 ${score}。多听几遍唱段，熟悉旋律后再来挑战。`;document.getElementById('resultPanel').classList.remove('hidden');startBtn.disabled=false;startBtn.textContent='重新开始';if(score>best){best=score;localStorage.setItem('minimalTilesBest',String(best));}if(window.HWMProgress)window.HWMProgress.recordGame(score);setFeedback('体验完成，做得很好');}
+ startBtn.addEventListener('click',start);againBtn.addEventListener('click',start);resetBtn.addEventListener('click',()=>{clearMedia();fileInput.value='';loadBtn.disabled=true;fileStatus.textContent='尚未选择素材。';resetRound();setFeedback('请重新选择音乐素材');startBtn.textContent='开始节奏挑战';});
+ resetRound();
 })();
 </script>
 <script src="progress.js"></script>
-</body>
-</html>
+</body></html>
