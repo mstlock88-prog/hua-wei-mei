@@ -3,99 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f6f2ea">
-<title>花为媒｜越剧互动学习平台</title>
+<meta name="theme-color" content="#f5f1e9">
+<title>花为媒｜一场越剧数字体验</title>
 <style>
-:root{--paper:#f6f2ea;--white:#fffdf8;--ink:#25231f;--muted:#777168;--red:#a53d45;--pink:#d9a0a7;--gold:#a88d62;--line:#e3dbce;--sage:#7b8067}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Songti SC","STSong",serif}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1160px,calc(100% - 48px));margin:auto}
-header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-size:23px;letter-spacing:.2em;font-weight:600}.brand small{display:block;font:10px Arial,sans-serif;letter-spacing:.18em;color:var(--muted);margin-top:4px}.nav{display:flex;gap:30px;font-size:13px;color:#625d55}.nav a:hover{color:var(--red)}.menu{display:none;border:0;background:none;font-size:24px}
-.hero{padding:54px 0 48px;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:stretch}.hero-copy{padding:28px 0}.eyebrow{font:11px Arial,sans-serif;letter-spacing:.2em;color:var(--red);text-transform:uppercase}.eyebrow:before{content:"";display:inline-block;width:27px;height:1px;background:var(--red);vertical-align:middle;margin-right:11px}.hero h1{font-size:clamp(48px,6vw,76px);font-weight:500;letter-spacing:.12em;line-height:1.2;margin:25px 0 13px}.hero h1 span{color:var(--red)}.subtitle{font-size:18px;letter-spacing:.08em;color:#615b52;margin:0 0 18px}.intro{font-size:14px;line-height:2.1;color:var(--muted);max-width:450px;margin:0 0 28px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{border:1px solid var(--ink);background:var(--ink);color:white;padding:13px 20px;font-size:13px;letter-spacing:.08em;display:inline-flex;gap:18px;align-items:center;justify-content:center;transition:.2s}.btn:hover{background:var(--red);border-color:var(--red);transform:translateY(-2px)}.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}.btn.ghost:hover{color:var(--red);border-color:var(--red)}.tiny{font:10px Arial,sans-serif;letter-spacing:.12em;color:#999185;margin-top:22px}
-.hero-visual{min-height:390px;background:#eee7dc;position:relative;overflow:hidden;padding:26px;display:flex;align-items:end}.hero-visual:before{content:"";position:absolute;width:330px;height:330px;border:1px solid #c9b7a0;border-radius:50%;right:7%;top:6%;box-shadow:0 0 0 16px #eee7dc,0 0 0 17px #d8c9b5,0 0 0 42px #eee7dc,0 0 0 43px #dfd1bf}.hero-visual:after{content:"花";position:absolute;right:18%;top:15%;font-size:170px;color:rgba(165,61,69,.14);font-weight:400;writing-mode:vertical-rl}.visual-label{position:relative;z-index:1;background:rgba(255,253,248,.88);padding:17px 20px;max-width:245px}.visual-label b{font-size:18px;font-weight:500;letter-spacing:.12em}.visual-label p{font-size:12px;line-height:1.8;color:var(--muted);margin:7px 0 0}.stamp{position:absolute;right:25px;bottom:25px;border:1px solid var(--red);color:var(--red);width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:20px;z-index:1}
-.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 72px}.quick a{background:var(--white);border:1px solid var(--line);padding:19px 21px;display:flex;align-items:center;gap:15px;transition:.2s}.quick a:hover{border-color:#c9a5a0;transform:translateY(-2px)}.quick .symbol{width:40px;height:40px;border-radius:50%;background:#f1e4df;color:var(--red);display:grid;place-items:center;font-size:19px}.quick b{font-size:15px;font-weight:500}.quick small{display:block;color:var(--muted);font-size:11px;margin-top:5px}
-section{padding:66px 0;border-top:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:30px}.num{font:11px Arial,sans-serif;letter-spacing:.18em;color:var(--red);margin-bottom:10px}.section-head h2{font-size:34px;font-weight:500;letter-spacing:.08em;margin:0}.section-head p{font-size:13px;line-height:1.9;color:var(--muted);max-width:380px;margin:0}
-.explore-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.explore{background:var(--white);border:1px solid var(--line);min-height:185px;padding:22px;display:flex;flex-direction:column;transition:.2s}.explore:hover{transform:translateY(-3px);border-color:#c9a5a0}.explore .icon{font-size:25px;color:var(--red)}.explore h3{font-size:19px;font-weight:500;margin:23px 0 8px}.explore p{font-size:12px;line-height:1.8;color:var(--muted);margin:0}.explore span{margin-top:auto;padding-top:16px;color:var(--red);font-size:11px}
-.path{background:#eee8de;padding:34px}.path-top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:24px}.path-top strong{font-size:19px;font-weight:500}.path-top small{font-size:11px;color:var(--muted)}.progress{height:5px;background:#dcd3c6;margin:0 0 25px;overflow:hidden}.progress i{display:block;width:0;height:100%;background:var(--red);transition:.3s}.lessons{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.lesson{background:var(--white);padding:19px 17px;border:1px solid #e1d8cb;min-height:185px;display:flex;flex-direction:column}.lesson .chapter{font:10px Arial,sans-serif;letter-spacing:.15em;color:var(--red)}.lesson h3{font-size:17px;font-weight:500;margin:17px 0 8px}.lesson p{font-size:11px;line-height:1.8;color:var(--muted);margin:0}.lesson button{margin-top:auto;align-self:flex-start;border:0;background:none;color:var(--red);padding:15px 0 0;font-size:12px;cursor:pointer}.lesson.done{border-color:#b9b39e;background:#faf9f3}.lesson.done .chapter:after{content:" · 已完成";color:var(--sage)}
-.challenge{display:grid;grid-template-columns:1fr 1fr;background:var(--white);border:1px solid var(--line)}.challenge-art{min-height:260px;background:#eadfd5;display:grid;place-items:center;position:relative;overflow:hidden}.challenge-art:before{content:"";width:180px;height:180px;border:1px solid #c59c91;border-radius:50%;box-shadow:0 0 0 15px #eadfd5,0 0 0 16px #c59c91,0 0 0 35px #eadfd5,0 0 0 36px #c59c91}.challenge-art span{position:absolute;font-size:72px;color:rgba(165,61,69,.55)}.challenge-copy{padding:34px;display:flex;flex-direction:column;justify-content:center}.challenge-copy h3{font-size:25px;font-weight:500;margin:13px 0}.challenge-copy p{font-size:13px;line-height:2;color:var(--muted);max-width:420px}.challenge-copy .btn{align-self:flex-start;margin-top:12px}
-.notice{font-size:11px;line-height:1.8;color:#8b8377;margin-top:18px}.footer{padding:28px 0 40px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:11px}.footer b{font-size:15px;letter-spacing:.15em;color:var(--ink);font-weight:500}
-@media(max-width:800px){.wrap{width:calc(100% - 34px)}.nav{display:none}.menu{display:block}header{height:66px}.hero{grid-template-columns:1fr;padding-top:32px;gap:20px}.hero-copy{padding:10px 0}.hero-visual{min-height:280px}.hero h1{font-size:58px}.quick{grid-template-columns:1fr;margin-bottom:50px}.explore-grid{grid-template-columns:repeat(2,1fr)}.lessons{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:14px}.challenge{grid-template-columns:1fr}.challenge-art{min-height:210px}.footer{flex-direction:column}}
-@media(max-width:430px){.explore-grid{grid-template-columns:1fr 1fr}.explore{padding:16px;min-height:190px}.lessons{grid-template-columns:1fr 1fr}.path{padding:20px 14px}.lesson{padding:15px 12px}.hero h1{font-size:50px}}
+:root{
+  --paper:#f5f1e9;--paper2:#eee8dc;--ink:#242320;--muted:#777168;
+  --red:#a83c43;--pink:#d99ca6;--gold:#aa9069;--line:#d9d1c4;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Songti SC","STSong",serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:min(1180px,calc(100% - 56px));margin:auto}
+.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{font-size:22px;letter-spacing:.22em;font-weight:600}
+.brand small{display:block;font:10px/1.8 Arial,sans-serif;letter-spacing:.2em;color:var(--muted)}
+.nav{display:flex;gap:34px;font-size:13px;color:#625e56}
+.nav a{padding:10px 0;position:relative}
+.nav a:hover{color:var(--red)}
+.nav a:hover:after{content:"";position:absolute;bottom:3px;left:0;width:100%;height:1px;background:var(--red)}
+.menu{display:none;border:0;background:none;font-size:22px}
+.hero{min-height:650px;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:42px;padding:66px 0 78px}
+.kicker{font:11px Arial,sans-serif;letter-spacing:.24em;color:var(--red);display:flex;align-items:center;gap:12px}
+.kicker:before{content:"";width:32px;height:1px;background:var(--red)}
+h1{font-size:clamp(56px,8vw,104px);font-weight:500;letter-spacing:.12em;line-height:1.18;margin:28px 0 18px}
+.hero-sub{font-size:19px;letter-spacing:.12em;color:#655f56;margin:0 0 20px}
+.hero-desc{max-width:390px;font-size:14px;line-height:2.1;color:var(--muted);margin:0 0 34px}
+.actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:22px;padding:15px 23px;background:var(--ink);color:#fff;border:1px solid var(--ink);font-size:13px;letter-spacing:.1em;transition:.2s}
+.btn:hover{background:var(--red);border-color:var(--red);transform:translateY(-2px)}
+.btn.secondary{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.secondary:hover{color:var(--red);border-color:var(--red);background:transparent}
+.hero-note{margin-top:28px;font:10px Arial,sans-serif;letter-spacing:.14em;color:#9a9388}
+.art{height:510px;position:relative;display:flex;align-items:center;justify-content:center}
+.art-frame{position:absolute;inset:18px 20px 18px 38px;border:1px solid #d8cabb}
+.art-frame:before{content:"";position:absolute;inset:12px;border:1px solid rgba(170,144,105,.35)}
+.flower-art{width:100%;height:100%;position:relative;z-index:1}
+.art-caption{position:absolute;bottom:4px;right:4px;font-size:11px;letter-spacing:.18em;color:var(--muted);writing-mode:vertical-rl}
+.vertical-mark{position:absolute;top:25px;left:0;writing-mode:vertical-rl;color:var(--red);font-size:12px;letter-spacing:.3em}
+.section{padding:88px 0;border-top:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
+.index{font:11px Arial,sans-serif;color:var(--red);letter-spacing:.2em;margin-bottom:12px}
+h2{font-size:clamp(30px,4vw,46px);font-weight:500;letter-spacing:.1em;margin:0}
+.section-intro{max-width:390px;color:var(--muted);font-size:13px;line-height:2}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{border:1px solid var(--line);padding:26px 24px 24px;min-height:205px;display:flex;flex-direction:column;transition:.2s}
+.card:hover{background:#f9f6f0;transform:translateY(-3px);border-color:#c9b9a8}
+.card-num{font:11px Arial,sans-serif;letter-spacing:.18em;color:var(--red)}
+.card h3{font-size:22px;font-weight:500;letter-spacing:.1em;margin:26px 0 10px}
+.card p{font-size:13px;line-height:1.9;color:var(--muted);margin:0}
+.card .more{margin-top:auto;padding-top:22px;font-size:12px;color:var(--red)}
+.feature{display:grid;grid-template-columns:.9fr 1.1fr;gap:58px;align-items:center}
+.feature-art{min-height:360px;background:var(--paper2);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.feature-art svg{width:88%;height:88%}
+.feature-copy p{font-size:14px;line-height:2.2;color:var(--muted);max-width:470px}
+.note{border-left:2px solid var(--red);padding:12px 0 12px 18px;margin-top:25px;font-size:12px;line-height:1.9;color:#776f64}
+.footer{padding:30px 0 42px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:11px;letter-spacing:.08em}
+.footer strong{color:var(--ink);font-size:15px;letter-spacing:.18em}
+@media(max-width:760px){
+ .wrap{width:min(100% - 36px,560px)}.topbar{height:66px}.nav{display:none}.menu{display:block}
+ .hero{grid-template-columns:1fr;gap:20px;padding:55px 0 58px;min-height:auto}
+ h1{font-size:64px;margin-top:22px}.hero-desc{font-size:13px}
+ .art{height:350px;order:-1}.art-frame{inset:12px 16px}
+ .vertical-mark{left:0}.section{padding:64px 0}.section-head{display:block}.section-intro{margin-top:18px}
+ .cards{grid-template-columns:1fr}.card{min-height:175px}
+ .feature{grid-template-columns:1fr;gap:28px}.feature-art{min-height:280px}
+ .footer{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header>
-<a class="brand" href="#">花为媒<small>越剧 · 互动学习之旅</small></a>
-<nav class="nav"><a href="#explore">自由探索</a><a href="#path">学习路线</a><a href="#challenge">唱段挑战</a><a href="#about">关于项目</a></nav>
-<button class="menu" aria-label="跳转到学习路线" onclick="document.querySelector('#path').scrollIntoView({behavior:'smooth'})">☰</button>
-</header>
+  <header class="topbar">
+    <a class="brand" href="#">花为媒<small>越剧 · 数字体验</small></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#about">认识花为媒</a><a href="#culture">走近越剧</a><a href="#game">节奏体验</a>
+    <a href="media.html">视听资料馆</a></nav>
+    <button class="menu" aria-label="打开页面导航" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">☰</button>
+  </header>
 
-<main>
-<div class="hero">
-<div class="hero-copy">
-<div class="eyebrow">一场可以参与的越剧之旅</div>
-<h1>花<span>为</span>媒</h1>
-<p class="subtitle">从认识一出戏，到走近一种艺术</p>
-<p class="intro">以《花为媒》为起点，通过剧情探索、人物认识、唱腔欣赏与节奏挑战，循序渐进地走近越剧。你可以自由浏览，也可以沿着学习路线一步步解锁。</p>
-<div class="actions"><a class="btn" href="#path">开始学习 <span>→</span></a><a class="btn ghost" href="#explore">自由探索</a></div>
-<div class="tiny">认识 · 聆听 · 体验 · 回顾</div>
-</div>
-<div class="hero-visual" aria-label="花为媒主题视觉装饰">
-<div class="visual-label"><b>以花为引，以戏为媒</b><p>在故事、声音与舞台之间，发现越剧的美。</p></div><div class="stamp">戏</div>
-</div>
-</div>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="kicker">一场关于越剧的互动体验</div>
+        <h1>花为媒</h1>
+        <p class="hero-sub">一曲入戏，一步一花开。</p>
+        <p class="hero-desc">从一段唱腔开始，认识一出戏的故事、人物与声音。循着旋律，走近越剧《花为媒》的舞台世界。</p>
+        <div class="actions">
+          <a class="btn" href="#game">开始探索 <span>↗</span></a>
+          <a class="btn secondary" href="#about">先认识作品 <span>↓</span></a>
+        </div>
+        <div class="hero-note">戏曲 · 故事 · 节奏互动</div>
+      </div>
+      <div class="art" aria-label="花枝主题装饰插画">
+        <div class="art-frame"></div><div class="vertical-mark">花开有时 · 戏韵悠长</div>
+        <svg class="flower-art" viewBox="0 0 520 560" role="img" aria-label="抽象花枝与花朵插画">
+          <defs>
+            <linearGradient id="petal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8c2c0"/><stop offset="1" stop-color="#bd7379"/></linearGradient>
+            <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a5a18a"/><stop offset="1" stop-color="#626c5a"/></linearGradient>
+          </defs>
+          <path d="M100 500 C190 390 220 300 260 210 C290 140 350 95 420 48" fill="none" stroke="#686d58" stroke-width="3"/>
+          <path d="M210 365 C135 330 95 275 94 224 C157 233 208 280 210 365Z" fill="url(#leaf)" opacity=".85"/>
+          <path d="M274 245 C340 232 391 191 407 139 C344 143 294 180 274 245Z" fill="url(#leaf)" opacity=".82"/>
+          <path d="M155 435 C93 426 54 389 39 342 C100 348 145 380 155 435Z" fill="url(#leaf)" opacity=".72"/>
+          <g transform="translate(360 125)">
+            <ellipse rx="26" ry="61" transform="rotate(0) translate(0 -39)" fill="url(#petal)"/>
+            <ellipse rx="26" ry="61" transform="rotate(72) translate(0 -39)" fill="url(#petal)"/>
+            <ellipse rx="26" ry="61" transform="rotate(144) translate(0 -39)" fill="url(#petal)"/>
+            <ellipse rx="26" ry="61" transform="rotate(216) translate(0 -39)" fill="url(#petal)"/>
+            <ellipse rx="26" ry="61" transform="rotate(288) translate(0 -39)" fill="url(#petal)"/>
+            <circle r="15" fill="#b48a55"/>
+          </g>
+          <g transform="translate(222 275) scale(.62)">
+            <ellipse rx="25" ry="57" transform="translate(0 -35)" fill="#d9a0a0"/>
+            <ellipse rx="25" ry="57" transform="rotate(72) translate(0 -35)" fill="#e6b9b2"/>
+            <ellipse rx="25" ry="57" transform="rotate(144) translate(0 -35)" fill="#cf8b91"/>
+            <ellipse rx="25" ry="57" transform="rotate(216) translate(0 -35)" fill="#e7c1b7"/>
+            <ellipse rx="25" ry="57" transform="rotate(288) translate(0 -35)" fill="#d79a9a"/>
+            <circle r="13" fill="#b48a55"/>
+          </g>
+          <g fill="#bd7379"><circle cx="430" cy="73" r="8"/><circle cx="455" cy="55" r="5"/><circle cx="320" cy="175" r="6"/></g>
+          <path d="M100 500 C180 410 220 330 260 210" fill="none" stroke="#a83c43" stroke-width="1" opacity=".35"/>
+        </svg>
+        <div class="art-caption">以花为引 · 以戏为媒</div>
+      </div>
+    </section>
 
-<div class="quick">
-<a href="#explore"><div class="symbol">✿</div><div><b>自由探索</b><small>按兴趣认识越剧</small></div></a>
-<a href="#path"><div class="symbol">册</div><div><b>系统学习</b><small>沿课程路线逐步解锁</small></div></a>
-<a href="game.html"><div class="symbol">♫</div><div><b>节奏体验</b><small>进入互动小游戏</small></div></a>
-</div>
+    <section class="section" id="about">
+      <div class="section-head">
+        <div><div class="index">01 / 认识作品</div><h2>先读懂一出戏</h2></div>
+        <p class="section-intro">在进入节奏挑战之前，先认识作品的来历、人物与故事。每一段旋律，都有它发生的情境。</p>
+      </div>
+      <div class="cards">
+        <a class="card" href="#culture"><span class="card-num">A — STORY</span><h3>故事与情节</h3><p>从剧情脉络出发，了解作品讲述的故事，以及唱段在其中的位置。</p><span class="more">了解故事　↗</span></a>
+        <a class="card" href="#culture"><span class="card-num">B — CHARACTERS</span><h3>人物与关系</h3><p>认识剧中人物，梳理人物之间的关系与情感变化。</p><span class="more">认识人物　↗</span></a>
+        <a class="card" href="#culture"><span class="card-num">C — PERFORMANCE</span><h3>唱腔与舞台</h3><p>从唱腔、身段、服饰与舞台表现，发现越剧的艺术特色。</p><span class="more">走近越剧　↗</span></a>
+      </div>
+    </section>
 
-<section id="explore">
-<div class="section-head"><div><div class="num">01 / DISCOVER</div><h2>自由探索</h2></div><p>不必按照固定顺序。选择你感兴趣的入口，像参观一场数字展览一样，慢慢认识越剧。</p></div>
-<div class="explore-grid">
-<a class="explore" href="chapter1.html"><div class="icon">❀</div><h3>认识《花为媒》</h3><p>从作品背景、剧情线索与演出版本开始了解。</p><span>进入探索 →</span></a>
-<a class="explore" href="#path"><div class="icon">◇</div><h3>人物与关系</h3><p>认识剧中人物，梳理人物之间的联系。</p><span>查看学习单元 →</span></a>
-<a class="explore" href="#path"><div class="icon">♫</div><h3>越剧唱腔</h3><p>从声音、旋律与节奏的角度走近越剧。</p><span>查看学习单元 →</span></a>
-<a class="explore" href="#path"><div class="icon">✧</div><h3>服装与舞台</h3><p>观察戏服、妆容、舞台与表演的视觉语言。</p><span>查看学习单元 →</span></a>
-</div>
-</section>
+    <section class="section" id="culture">
+      <div class="feature">
+        <div class="feature-art">
+          <svg viewBox="0 0 440 360" role="img" aria-label="舞台帷幕与花枝抽象图">
+            <path d="M35 35 Q110 100 70 325 L370 325 Q330 100 405 35" fill="none" stroke="#a83c43" stroke-width="2"/>
+            <path d="M55 40 Q145 110 105 325 M385 40 Q295 110 335 325" fill="none" stroke="#b49a70" stroke-width="1"/>
+            <path d="M220 300 C180 230 220 175 290 100" fill="none" stroke="#69715e" stroke-width="3"/>
+            <path d="M210 250 Q140 200 130 145 Q195 160 210 250Z" fill="#a5a18a"/>
+            <g transform="translate(290 100)" fill="#d99ca6"><ellipse cy="-28" rx="16" ry="34"/><ellipse transform="rotate(72)" cy="-28" rx="16" ry="34"/><ellipse transform="rotate(144)" cy="-28" rx="16" ry="34"/><ellipse transform="rotate(216)" cy="-28" rx="16" ry="34"/><ellipse transform="rotate(288)" cy="-28" rx="16" ry="34"/></g>
+            <path d="M130 325 H310" stroke="#aa9069" stroke-width="2"/>
+            <text x="220" y="345" text-anchor="middle" font-size="10" fill="#777168" letter-spacing="4">YUE OPERA</text>
+          </svg>
+        </div>
+        <div class="feature-copy">
+          <div class="index">02 / 走近越剧</div><h2>听见唱腔里的故事</h2>
+          <p>越剧的魅力，不只在旋律，也在人物的情感、唱词的表达与舞台上的一颦一笑。我们将用简短的图文导读，带你认识这门戏曲艺术。</p>
+          <div class="note">每一篇知识介绍都将以可核实的剧种资料与具体演出版本为依据，区分不同剧种和改编版本。</div>
+        </div>
+      </div>
+    </section>
 
-<section id="path">
-<div class="section-head"><div><div class="num">02 / LEARNING PATH</div><h2>我的学习路线</h2></div><p>从作品到剧种，从听觉到视觉。完成每个单元后，逐渐点亮你的越剧学习之旅。</p></div>
-<div class="path">
-<div class="path-top"><strong>越剧入门 · 四个学习单元</strong><small id="progressText">已完成 0 / 4 个单元</small></div>
-<div class="progress"><i id="progressBar"></i></div>
-<div class="lessons">
-<article class="lesson" data-lesson="1"><div class="chapter">第一章 · 作品</div><h3><a href="chapter1.html">认识《花为媒》 ↗</a></h3><p>了解作品、剧情线索与演出版本。</p><a class="course-link" href="chapter1.html" style="margin-top:auto;padding-top:15px;color:#a53d45;font-size:12px">进入第一章课程 →</a><button onclick="completeLesson(1)">标记为已完成 →</button></article>
-<article class="lesson" data-lesson="2"><div class="chapter">第二章 · 剧种</div><h3><a href="chapter2.html">走近越剧 ↗</a></h3><p>认识越剧的基本历史与艺术特点。</p><a class="course-link" href="chapter2.html" style="margin-top:auto;padding-top:15px;color:#a53d45;font-size:12px">进入第二章课程 →</a><button onclick="completeLesson(2)">标记为已完成 →</button></article>
-<article class="lesson" data-lesson="3"><div class="chapter">第三章 · 声音</div><h3>听懂越剧唱腔</h3><p>了解唱腔、旋律与节奏的表达。</p><button onclick="completeLesson(3)">标记为已完成 →</button></article>
-<article class="lesson" data-lesson="4"><div class="chapter">第四章 · 舞台</div><h3>体验越剧表演</h3><p>认识服装、妆容、身段与舞台表现。</p><button onclick="completeLesson(4)">标记为已完成 →</button></article>
-</div>
-<p class="notice">学习进度暂存在当前浏览器中。作品剧情、人物与唱段资料将在后续版本中依据具体越剧演出来源逐项整理。</p>
-</div>
-</section>
 
-<section id="challenge">
-<div class="section-head"><div><div class="num">03 / PLAY & LISTEN</div><h2>唱段挑战</h2></div><p>先了解唱段，再进入节奏体验。让游戏成为学习的一部分，而不只是独立的娱乐。</p></div>
-<div class="challenge">
-<div class="challenge-art"><span>花</span></div>
-<div class="challenge-copy"><div class="eyebrow">INTERACTIVE RHYTHM</div><h3>用节奏，靠近越剧</h3><p>准备好进入节奏小游戏了吗？后续我们会把经过核实并取得使用许可的越剧唱段，逐步制作成带有剧情导读、唱段欣赏和知识回顾的完整关卡。</p><a class="btn" href="game.html">进入节奏游戏 <span>→</span></a></div>
-</div>
-</section>
+    <section class="section" id="media-archive">
+      <div class="section-head">
+        <div><div class="index">04 / AUDIO & VIDEO ARCHIVE</div><h2>走进视听资料馆</h2></div>
+        <p class="section-intro">从余杭小百花越剧《花为媒》全剧出发，再沿着唱段、艺术家与唱腔线索继续探索。</p>
+      </div>
+      <div class="cards">
+        <a class="card" href="media.html"><span class="card-num">01 / FULL PERFORMANCE</span><h3>全剧欣赏</h3><p>观看余杭小百花版本候选视频，了解演出版本与资料来源。</p><span class="more">进入资料馆 ↗</span></a>
+        <a class="card" href="media.html#excerpts"><span class="card-num">02 / EXCERPTS</span><h3>唱段与片段</h3><p>按剧目、演唱者与版本整理可继续查证的视听线索。</p><span class="more">浏览唱段 ↗</span></a>
+        <a class="card" href="media.html#listening"><span class="card-num">03 / LISTENING</span><h3>越剧声音采集</h3><p>从四工调、尺调、弦下调开始，建立自己的聆听索引。</p><span class="more">开始聆听 ↗</span></a>
+      </div>
+    </section>
 
-<section id="about">
-<div class="section-head"><div><div class="num">04 / ABOUT</div><h2>关于「花为媒」</h2></div><p>这是一个以越剧文化为主题的互动学习项目，尝试用当代数字体验连接传统戏曲。</p></div>
-<div style="border-left:2px solid var(--red);padding:8px 0 8px 22px;max-width:700px;color:var(--muted);font-size:14px;line-height:2.2">以互动学习为主线，以艺术展览为视觉语言。让用户可以自由探索，也可以通过课程、游戏与知识回顾，建立对越剧更完整的认识。</div>
-</section>
-</main>
-<footer class="footer"><b>花为媒</b><span>越剧 · 互动学习之旅</span><span>以花为引，以戏为媒</span></footer>
+    <section class="section" id="game">
+      <div class="section-head">
+        <div><div class="index">03 / 节奏体验</div><h2>让旋律成为一次互动</h2></div>
+        <p class="section-intro">先阅读关卡导读，再跟随越剧唱段完成节奏挑战。每一关都从一段真实演出录音出发。</p>
+      </div>
+      <div class="cards">
+        <div class="card"><span class="card-num">01 / READ</span><h3>阅读导读</h3><p>了解唱段对应的剧情、人物与音乐背景。</p></div>
+        <div class="card"><span class="card-num">02 / LISTEN</span><h3>聆听唱段</h3><p>熟悉旋律与节奏，准备进入游戏。</p></div>
+        <div class="card"><span class="card-num">03 / PLAY</span><h3>节奏挑战</h3><p>跟随音乐点击音符，在互动中感受戏曲节奏。</p></div>
+      </div>
+      <div style="margin-top:28px"><a class="btn" href="game.html">体验基础游戏原型 <span>↗</span></a></div>
+    </section>
+  </main>
+  <footer><strong>花为媒</strong><span>一曲入戏，一步一花开。</span><span>越剧数字体验 · 首页概念版</span></footer>
 </div>
-<script>
-const KEY='huaw-ei-mei-lessons-v1';
-function getDone(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
-function renderProgress(){const done=getDone();document.querySelectorAll('.lesson').forEach(card=>{const n=Number(card.dataset.lesson);const isDone=done.includes(n);card.classList.toggle('done',isDone);card.querySelector('button').textContent=isDone?'已完成 ✓（点击取消）':'标记为已完成 →'});document.getElementById('progressText').textContent=`已完成 ${done.length} / 4 个单元`;document.getElementById('progressBar').style.width=(done.length/4*100)+'%'}
-function completeLesson(n){let done=getDone();done=done.includes(n)?done.filter(x=>x!==n):[...done,n];localStorage.setItem(KEY,JSON.stringify(done));renderProgress()}
-renderProgress();
-</script>
 </body>
 </html>

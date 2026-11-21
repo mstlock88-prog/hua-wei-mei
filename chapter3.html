@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f3ec">
+<title>第三章｜听懂越剧唱腔 · 花为媒</title>
+<style>
+:root{--paper:#f7f3ec;--paper2:#fffdf8;--ink:#292522;--muted:#81766e;--red:#a5454a;--rose:#ead5d1;--gold:#a58a5d;--line:#e4dbd0;--green:#647b68}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Serif SC","Songti SC","STSong",serif;line-height:1.8}
+a{color:inherit;text-decoration:none}.wrap{max-width:1120px;margin:auto;padding:0 26px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid var(--line);font-family:Arial,sans-serif;font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.brand{font-family:serif;font-size:19px;letter-spacing:.18em;color:var(--red)}.top a:hover,.textlink:hover{color:var(--red)}
+.hero{padding:74px 0 52px;display:grid;grid-template-columns:1.2fr .8fr;gap:42px;align-items:center}
+.eyebrow,.kicker{font:11px Arial,sans-serif;letter-spacing:.2em;color:var(--red);text-transform:uppercase}
+h1{font-size:clamp(42px,7vw,76px);font-weight:500;line-height:1.15;letter-spacing:.08em;margin:18px 0}
+.lead{font-size:17px;color:#655b54;max-width:600px}.hero-art{min-height:310px;border-radius:48% 48% 8px 8px;background:radial-gradient(ellipse at 50% 30%,#f6e7df 0 17%,transparent 18%),linear-gradient(145deg,#e8d7ce,#c99d91 48%,#7d4c4b);position:relative;overflow:hidden;display:flex;align-items:end;justify-content:center;padding:30px}
+.hero-art:before{content:"聲";font-size:170px;color:#fff8ef55;position:absolute;top:15px;left:50%;transform:translateX(-50%);font-family:serif}
+.hero-art span{z-index:1;color:#fff9ef;letter-spacing:.3em;font-size:12px}
+.intro-note{border-left:2px solid var(--red);padding:8px 0 8px 18px;color:var(--muted);font-size:13px;margin-top:28px}
+.section{padding:56px 0;border-top:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:28px}
+.section-head h2{font-size:30px;font-weight:500;margin:8px 0 0}.section-head p{max-width:510px;color:var(--muted);font-size:13px;margin:0}
+.route-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.route{background:var(--paper2);border:1px solid var(--line);padding:24px;border-radius:4px;display:flex;gap:18px;align-items:flex-start;transition:.2s}
+.route:hover{transform:translateY(-3px);border-color:#c9a39b}.route-no{font:12px Arial,sans-serif;color:var(--red);letter-spacing:.12em}.route h3{font-size:20px;font-weight:500;margin:0 0 6px}.route p{font-size:13px;color:var(--muted);margin:0}
+.route .arrow{margin-left:auto;color:var(--red);font-size:20px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}.filter{border:1px solid var(--line);background:transparent;padding:7px 14px;border-radius:30px;font:12px inherit;color:var(--muted);cursor:pointer}.filter.active,.filter:hover{background:var(--red);border-color:var(--red);color:white}
+.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.archive-card{background:var(--paper2);border:1px solid var(--line);padding:21px;min-height:220px;display:flex;flex-direction:column;position:relative}
+.archive-card .tag{font:10px Arial,sans-serif;letter-spacing:.15em;color:var(--gold)}
+.archive-card h3{font-size:23px;font-weight:500;margin:14px 0 3px}.archive-card .sub{font-size:12px;color:var(--muted)}
+.archive-card p{font-size:13px;color:#655b54;line-height:1.8}
+.archive-card button,.primary{border:0;background:var(--red);color:#fff;padding:10px 15px;cursor:pointer;font:13px inherit;margin-top:auto;align-self:flex-start}
+.archive-card button:hover,.primary:hover{background:#84383e}
+.detail-panel{background:#eee5da;border:1px solid #dfd2c4;padding:24px;margin-top:18px;display:none}
+.detail-panel.open{display:block}.detail-panel h3{font-size:22px;font-weight:500;margin:0 0 8px}.detail-panel p{font-size:14px;color:#5f554e}
+.detail-meta{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.pill{font:11px Arial,sans-serif;padding:4px 9px;border:1px solid #cbb8a6;border-radius:20px;color:#6c5b4e}
+.audio-box{margin-top:15px;padding:14px;background:#fffaf3;border:1px dashed #c7b8a8;color:var(--muted);font-size:12px}
+.linkline{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--red)}
+.note-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}
+.note-card{background:var(--paper2);border:1px solid var(--line);padding:24px}
+label{display:block;font-size:13px;margin:13px 0 5px}input,textarea,select{width:100%;padding:11px;border:1px solid var(--line);background:#fffdf9;font:14px inherit;color:var(--ink);border-radius:2px}
+textarea{min-height:95px;resize:vertical}
+.saved-list{display:grid;gap:10px}.saved{background:#fffaf3;border:1px solid var(--line);padding:13px;font-size:13px}.saved small{display:block;color:var(--muted);margin-top:5px}
+.quiz{background:#2e2926;color:#f7f1e8;padding:28px}.quiz h3{font-weight:500;font-size:23px;margin:0 0 12px}.quiz label{display:flex;gap:10px;align-items:center}.quiz input{width:auto}.quiz button{margin-top:18px}.feedback{font-size:13px;color:#e8c9bd;margin-top:10px}
+.sources{font-size:12px;color:var(--muted);line-height:2}.sources a{color:var(--red);text-decoration:underline}
+footer{padding:35px 0 55px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;border-top:1px solid var(--line)}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:48px 0 36px;gap:24px}.hero-art{min-height:220px}.route-grid,.note-layout{grid-template-columns:1fr}.archive-grid{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:12px}.top{font-size:10px}.wrap{padding:0 18px}}
+@media(max-width:480px){.archive-grid{grid-template-columns:1fr}.archive-card{min-height:185px}.route{padding:18px}.section{padding:42px 0}footer{display:block}footer span{display:block;margin-top:6px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><a class="brand" href="index.html">花为媒</a><span>CHAPTER 03 · SOUND ARCHIVE</span><span><a href="media.html">视听资料馆 ↗</a>　<a href="index.html">返回首页 ↗</a></span></header>
+<main>
+<section class="hero">
+<div>
+<div class="eyebrow">A DIGITAL ARCHIVE OF YUE OPERA</div>
+<h1>听懂<br>越剧唱腔</h1>
+<p class="lead">走进一座可以自由探索的声音档案馆。从艺术家认识流派，也从唱腔寻找艺术家。让每一次聆听，都成为一条新的线索。</p>
+<div class="intro-note">这里不要求你立刻听懂所有专业知识。先听、先观察，再慢慢找到自己的判断。</div>
+</div>
+<div class="hero-art"><span>声音档案 · 自由探索</span></div>
+</section>
+
+<section class="section" id="guide"><p><a class="primary" href="media.html">进入视听资料馆 ↗</a></p>
+<div class="section-head"><div><div class="kicker">ARCHIVE GUIDE</div><h2>选择你的探索路线</h2></div><p>艺术家与唱腔不是彼此分开的两份名单。你可以从任何一端开始，再沿着关联继续探索。</p></div>
+<div class="route-grid">
+<a class="route" href="#artists"><span class="route-no">A / 01</span><div><h3>从艺术家出发</h3><p>认识代表性艺术家、流派风格与艺术实践。</p></div><span class="arrow">↗</span></a>
+<a class="route" href="#tunes"><span class="route-no">B / 02</span><div><h3>从唱腔出发</h3><p>认识主要腔调，理解唱腔与人物表达的关系。</p></div><span class="arrow">↗</span></a>
+</div>
+</section>
+
+<section class="section" id="artists">
+<div class="section-head"><div><div class="kicker">01 / ARTISTS & SCHOOLS</div><h2>艺术家档案</h2></div><p>先从几位具有代表性的流派创始人开始。点击档案卡，查看人物、流派与相关唱腔线索。</p></div>
+<div class="filters" id="artistFilters">
+<button class="filter active" data-filter="all">全部档案</button><button class="filter" data-filter="旦角">旦角流派</button><button class="filter" data-filter="小生">小生流派</button>
+</div>
+<div class="archive-grid" id="artistGrid">
+<article class="archive-card" data-role="旦角"><span class="tag">DAN · SCHOOL 01</span><h3>袁雪芬</h3><span class="sub">袁派｜旦角流派</span><p>唱腔质朴平易、委婉细腻，重视从人物情感出发组织唱腔。</p><button onclick="showArtist('yuan')">打开人物档案 ↗</button></article>
+<article class="archive-card" data-role="小生"><span class="tag">XIAOSHENG · SCHOOL 02</span><h3>尹桂芳</h3><span class="sub">尹派｜小生流派</span><p>唱腔醇厚隽永、舒展流畅，讲究以字行腔、以情带声。</p><button onclick="showArtist('yin')">打开人物档案 ↗</button></article>
+<article class="archive-card" data-role="小生"><span class="tag">XIAOSHENG · SCHOOL 03</span><h3>范瑞娟</h3><span class="sub">范派｜小生流派</span><p>唱腔朴实大方、咬字坚实，弦下腔的形成与其艺术实践密切相关。</p><button onclick="showArtist('fan')">打开人物档案 ↗</button></article>
+<article class="archive-card" data-role="小生"><span class="tag">XIAOSHENG · SCHOOL 04</span><h3>徐玉兰</h3><span class="sub">徐派｜小生流派</span><p>唱腔华彩跌宕、洒脱流畅，常见较鲜明的旋律起伏。</p><button onclick="showArtist('xu')">打开人物档案 ↗</button></article>
+<article class="archive-card" data-role="旦角"><span class="tag">DAN · SCHOOL 05</span><h3>王文娟</h3><span class="sub">王派｜旦角流派</span><p>以独特的旦角表演与演唱风格形成王派艺术，后续可结合代表唱段细听。</p><button onclick="showArtist('wang')">打开人物档案 ↗</button></article>
+<article class="archive-card" data-role="旦角"><span class="tag">DAN · SCHOOL 06</span><h3>傅全香</h3><span class="sub">傅派｜旦角流派</span><p>流派风格具有鲜明个性，可从唱腔旋律、润腔和人物塑造等角度观察。</p><button onclick="showArtist('fu')">打开人物档案 ↗</button></article>
+</div>
+<div class="detail-panel" id="artistDetail" aria-live="polite"></div>
+</section>
+
+<section class="section" id="tunes">
+<div class="section-head"><div><div class="kicker">02 / TUNE ARCHIVE</div><h2>唱腔档案</h2></div><p>唱腔名称背后有历史发展，也有不同艺术家的创造。以下先建立基础档案，再逐步加入具体音频样本。</p></div>
+<div class="archive-grid">
+<article class="archive-card"><span class="tag">TUNE · 001</span><h3>四工调</h3><span class="sub">越剧重要腔调之一</span><p>与女子越剧早期发展密切相关，具有清新、明快等历史风格线索。</p><button onclick="showTune('sigung')">打开唱腔档案 ↗</button></article>
+<article class="archive-card"><span class="tag">TUNE · 002</span><h3>尺调</h3><span class="sub">越剧主要腔调之一</span><p>在越剧音乐改革与发展中不断丰富，板式和表现力逐渐扩展。</p><button onclick="showTune('chi')">打开唱腔档案 ↗</button></article>
+<article class="archive-card"><span class="tag">TUNE · 003</span><h3>弦下调</h3><span class="sub">与范派艺术实践密切相关</span><p>范瑞娟在弦下腔的创造与发展中发挥重要作用，拓展了唱腔表现力。</p><button onclick="showTune('xianxia')">打开唱腔档案 ↗</button></article>
+</div>
+<div class="detail-panel" id="tuneDetail" aria-live="polite"></div>
+</section>
+
+<section class="section" id="collection">
+<div class="section-head"><div><div class="kicker">03 / PERSONAL COLLECTION</div><h2>我的声音收藏</h2></div><p>听完一段声音，不必急着判断对错。把你的观察保存下来，慢慢形成个人听觉档案。</p></div>
+<div class="note-layout">
+<div class="note-card">
+<div class="kicker">LISTENING NOTE</div><h3 style="font-size:22px;font-weight:500;margin:8px 0">收藏一条听觉线索</h3>
+<label for="noteTitle">档案名称</label><input id="noteTitle" placeholder="例如：第一次听尹派唱腔">
+<label for="noteArtist">关联艺术家 / 唱腔</label><input id="noteArtist" placeholder="例如：尹桂芳、尺调">
+<label for="noteImpression">我的声音观察</label><textarea id="noteImpression" placeholder="声音给我的感觉、旋律变化、节奏特点，或它让我想到的画面……"></textarea>
+<button class="primary" onclick="saveNote()">保存到我的收藏</button>
+<p style="font-size:11px;color:var(--muted)">收藏内容保存在当前浏览器，不会上传到服务器。</p>
+</div>
+<div class="note-card"><div class="kicker">MY ARCHIVE</div><h3 style="font-size:22px;font-weight:500;margin:8px 0">已收藏的声音</h3><div class="saved-list" id="savedList"><p style="color:var(--muted);font-size:13px">还没有收藏。听到感兴趣的声音时，可以在左侧留下第一条记录。</p></div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-head"><div><div class="kicker">04 / KNOWLEDGE CHECK</div><h2>档案小测验</h2></div><p>用几个问题回顾刚才探索到的线索。</p></div>
+<div class="quiz">
+<h3>哪一项说法更准确？</h3>
+<label><input type="radio" name="quiz" value="a"> 每个越剧流派都只对应一种固定唱腔。</label>
+<label><input type="radio" name="quiz" value="b"> 流派风格是在艺术实践中逐渐形成的，唱腔也会不断发展。</label>
+<label><input type="radio" name="quiz" value="c"> 尺调、四工调和弦下调是三位艺术家的名字。</label>
+<button class="primary" onclick="checkQuiz()">提交答案</button><div class="feedback" id="quizFeedback"></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-head"><div><div class="kicker">SOURCES & NOTES</div><h2>档案来源与说明</h2></div></div>
+<div class="sources">
+<p>本页的基础知识参考以下公开资料。流派风格描述是入门线索，不是对每一段演唱的绝对判定；具体分析应结合演出版本、唱段语境和录音。</p>
+<p>· <a href="https://www.ihchina.cn/project_details/13266" target="_blank" rel="noopener">中国非物质文化遗产网：越剧</a>（主要腔调、剧种艺术特点）</p>
+<p>· <a href="https://www.yueju.net/api/expert_details?id=1" target="_blank" rel="noopener">上海越剧艺术研究中心：越剧流派论</a>（流派形成与发展）</p>
+<p>· <a href="https://www.cntv.cn/program/gwx/topic/opera/C13103/20050118/101286.shtml" target="_blank" rel="noopener">央视：越剧流派艺术——袁派</a>（袁派与尺调腔发展线索）</p>
+<p>· <a href="https://www.chinaooc.com.cn/course/69052e4e5345b682145773c6" target="_blank" rel="noopener">国家高等教育智慧教育平台：越剧流派介绍</a>（流派演唱特征学习资料）</p>
+<p>试听说明：当前版本尚未嵌入具体演出录音。后续将逐条核实演出者、剧目、版本与音频授权后再加入试听。</p>
+</div>
+</section>
+</main>
+<footer><b>花为媒 · 越剧互动学习</b><span>第三章 / 听懂越剧唱腔</span><a href="index.html">返回学习路线 ↑</a></footer>
+</div>
+<script>
+const KEY='huaw-ei-mei-lessons-v1', NOTEKEY='huaw-ei-mei-sound-notes-v1';
+const artists={
+yuan:{name:'袁雪芬',school:'袁派｜旦角流派',desc:'袁派由袁雪芬创立。相关资料常以质朴平易、委婉细腻、深沉含蓄来概括其唱腔特点。理解袁派时，可以留意吐字、行腔与人物情感之间的关系。',tunes:'尺调腔的发展与袁雪芬及琴师周宝才的艺术实践有重要联系。',work:'可从《香妃》等相关演出资料继续寻找具体唱段。',role:'旦角'},
+yin:{name:'尹桂芳',school:'尹派｜小生流派',desc:'尹派形成于20世纪40年代。常见风格描述包括醇厚隽永、舒展流畅、委婉缠绵；演唱讲究以字行腔、以情带声。',tunes:'尹派是小生流派。分析时可关注中低音区、吐字与旋律线条的结合。',work:'可从《沙漠王子》《盘妻索妻》等剧目寻找经核实的演出版本。',role:'小生'},
+fan:{name:'范瑞娟',school:'范派｜小生流派',desc:'范派由范瑞娟创立，常见描述包括朴实大方、咬字坚实、旋律起伏多变，具有较鲜明的阳刚气质。',tunes:'弦下腔的创造与发展是理解范派艺术的重要线索。',work:'可从《梁山伯与祝英台》等剧目寻找具体唱段。',role:'小生'},
+xu:{name:'徐玉兰',school:'徐派｜小生流派',desc:'徐派由徐玉兰创立，常见风格描述包括华彩俊逸、洒脱流畅、奔放高亢，旋律起伏较为鲜明。',tunes:'聆听时可留意音域、旋律起伏以及情绪表达的张力。',work:'可从《红楼梦》等剧目寻找经核实的演出版本。',role:'小生'},
+wang:{name:'王文娟',school:'王派｜旦角流派',desc:'王文娟创立王派，是越剧旦角流派的重要代表。正式学习时，应结合其具体演出与唱段来辨认风格，不宜只凭几个形容词概括。',tunes:'可从旦角唱腔、咬字、润腔和人物塑造之间的关系入手。',work:'可从《红楼梦》等代表剧目寻找具体唱段。',role:'旦角'},
+fu:{name:'傅全香',school:'傅派｜旦角流派',desc:'傅全香创立傅派。可从唱腔旋律的跳跃与起伏、润腔处理和人物塑造等方面建立听觉观察。',tunes:'建议对照具体唱段，观察旋律、节奏与人物情绪如何共同发挥作用。',work:'可从其代表剧目和可靠演出档案继续探索。',role:'旦角'}
+};
+const tunes={
+sigung:{name:'四工调',desc:'四工调（也称四工腔）是越剧发展中的重要腔调。相关研究将其发展与20世纪30年代女子越剧演出及施银花、琴师王春荣等人的实践联系起来。它是一个音乐腔调名称，不是某位艺术家的流派名称。',listen:'聆听时可以观察旋律的句法、节奏和伴奏关系；不要只凭“明快”或“柔美”等单一形容词作判断。',related:'施银花等早期女子越剧艺术实践；后续可继续扩展相关艺术家档案。'},
+chi:{name:'尺调',desc:'尺调是越剧主要腔调之一。央视资料提到，袁雪芬与琴师周宝才在《香妃》等演出实践中推动了尺调腔雏形的发展，之后尺调逐渐丰富，板式和表现力不断扩展。',listen:'可以留意不同板式的节奏组织、旋律走向和唱词表达。尺调之下还包含慢板、中板、连板、散板等不同板式。',related:'袁雪芬、周宝才等相关艺术实践。'},
+xianxia:{name:'弦下调',desc:'弦下调是越剧主要腔调之一。范瑞娟在弦下腔的创造与发展中发挥了重要作用，并根据不同人物情境拓展其表现力。',listen:'比较不同人物、不同唱段中的处理方式，观察旋律、音色和润腔如何服务于人物。',related:'范瑞娟、范派艺术实践。'}
+};
+function showArtist(id){const a=artists[id],el=document.getElementById('artistDetail');el.innerHTML=`<div class="kicker">ARTIST FILE / ${a.role}</div><h3>${a.name} · ${a.school}</h3><p>${a.desc}</p><div class="detail-meta"><span class="pill">${a.role}</span><span class="pill">${a.school}</span></div><p><b>关联唱腔线索：</b>${a.tunes}</p><p><b>继续探索：</b>${a.work}</p><div class="audio-box">试听档案待补充｜此处预留经核实并获得使用许可的具体演出音频，不以示意内容代替原声。</div><div class="linkline"><a href="#tunes" onclick="showTune('${id==='fan'?'xianxia':id==='yuan'?'chi':'sigung'}')">查看关联唱腔档案 →</a><a href="#collection" onclick="prefillNote('${a.name} · ${a.school}')">收藏这条线索 →</a></div>`;el.classList.add('open');el.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function showTune(id){const t=tunes[id],el=document.getElementById('tuneDetail');el.innerHTML=`<div class="kicker">TUNE FILE / ${id.toUpperCase()}</div><h3>${t.name}</h3><p>${t.desc}</p><p><b>聆听提示：</b>${t.listen}</p><p><b>关联艺术家：</b>${t.related}</p><div class="audio-box">试听档案待补充｜正式加入时将标注剧目、演出者、演出版本、录音来源与授权情况。</div><div class="linkline"><a href="#artists">返回艺术家档案 →</a><a href="#collection" onclick="prefillNote('${t.name}')">收藏这条唱腔线索 →</a></div>`;el.classList.add('open');el.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function prefillNote(v){document.getElementById('noteArtist').value=v;}
+document.querySelectorAll('#artistFilters .filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('#artistFilters .filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('#artistGrid .archive-card').forEach(card=>card.style.display=(btn.dataset.filter==='all'||card.dataset.role===btn.dataset.filter)?'flex':'none');}));
+function getNotes(){try{return JSON.parse(localStorage.getItem(NOTEKEY)||'[]')}catch(e){return[]}}
+function renderNotes(){const notes=getNotes(),el=document.getElementById('savedList');if(!notes.length){el.innerHTML='<p style="color:var(--muted);font-size:13px">还没有收藏。听到感兴趣的声音时，可以在左侧留下第一条记录。</p>';return;}el.innerHTML=notes.map((n,i)=>`<div class="saved"><b>${escapeHtml(n.title)}</b><div>${escapeHtml(n.subject)}</div><div>${escapeHtml(n.body)}</div><small>${n.date}　<button style="border:0;background:none;color:#a5454a;cursor:pointer" onclick="deleteNote(${i})">删除</button></small></div>`).join('');}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function saveNote(){const title=document.getElementById('noteTitle').value.trim()||'未命名声音档案',subject=document.getElementById('noteArtist').value.trim()||'未分类',body=document.getElementById('noteImpression').value.trim();if(!body){alert('先写下一点你的听觉观察，再保存吧。');return;}const notes=getNotes();notes.unshift({title,subject,body,date:new Date().toLocaleDateString('zh-CN')});localStorage.setItem(NOTEKEY,JSON.stringify(notes));document.getElementById('noteTitle').value='';document.getElementById('noteArtist').value='';document.getElementById('noteImpression').value='';renderNotes();}
+function deleteNote(i){const notes=getNotes();notes.splice(i,1);localStorage.setItem(NOTEKEY,JSON.stringify(notes));renderNotes();}
+function checkQuiz(){const a=document.querySelector('input[name="quiz"]:checked'),f=document.getElementById('quizFeedback');if(!a){f.textContent='请选择一个答案。';return;}f.textContent=a.value==='b'?'回答正确。流派风格在长期艺术实践中逐渐形成，唱腔也会不断发展。':'再想一想：流派不是固定公式，艺术风格也会随着实践不断丰富。';}
+renderNotes();
+</script>
+</body>
+</html>
